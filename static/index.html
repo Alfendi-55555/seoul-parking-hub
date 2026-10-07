@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서울 주차 허브</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <header>
+    <h1>서울 주차 허브</h1>
+    <p id="status" class="muted">불러오는 중…</p>
+  </header>
+
+  <main>
+    <section id="map"></section>
+
+    <aside id="panel">
+      <!-- 주차 중일 때 보이는 요금 미터 -->
+      <div id="meter" class="card meter" hidden>
+        <div class="row between">
+          <strong id="m-lot"></strong>
+          <span class="badge live">주차 중</span>
+        </div>
+        <div class="fee-big"><span id="m-fee">0</span>원</div>
+        <p class="muted">예상 요금 · 경과 <span id="m-elapsed"></span></p>
+        <p id="m-next"></p>
+        <p class="muted small">
+          입차 <span id="m-start"></span>
+          <button id="m-edit" class="link">시각 고치기</button>
+        </p>
+        <div id="m-edit-box" class="row" hidden>
+          <input id="m-start-input" type="datetime-local">
+          <button id="m-start-save">저장</button>
+        </div>
+        <p class="muted small" id="m-rule"></p>
+        <button id="m-end" class="primary danger">출차하기</button>
+      </div>
+
+      <div id="receipt" class="card" hidden>
+        <strong id="r-lot"></strong>
+        <div class="fee-big"><span id="r-fee"></span>원</div>
+        <p class="muted" id="r-time"></p>
+        <p class="muted small">실제 정산 금액은 할인·감면 등에 따라 다를 수 있어요.</p>
+        <button id="r-close">확인</button>
+      </div>
+
+      <!-- 주차장 상세 -->
+      <div id="detail" class="card" hidden>
+        <div class="row between">
+          <strong id="d-name"></strong>
+          <button id="d-close" class="link">닫기</button>
+        </div>
+        <p class="muted small" id="d-addr"></p>
+        <div id="d-avail" class="avail"></div>
+        <dl>
+          <dt>요금</dt><dd id="d-fee"></dd>
+          <dt>운영</dt><dd id="d-hours"></dd>
+          <dt>전화</dt><dd id="d-phone"></dd>
+        </dl>
+        <div class="row estimate">
+          <label for="d-min">예상 요금</label>
+          <select id="d-min">
+            <option value="30">30분</option>
+            <option value="60" selected>1시간</option>
+            <option value="120">2시간</option>
+            <option value="180">3시간</option>
+            <option value="480">8시간</option>
+          </select>
+          <strong id="d-est"></strong>
+        </div>
+        <button id="d-park" class="primary">여기에 주차 완료</button>
+      </div>
+
+      <div id="search" class="row">
+        <input id="q" type="search" placeholder="주차장 이름이나 주소 검색">
+        <label class="small"><input id="only-live" type="checkbox"> 실시간 여석만</label>
+      </div>
+      <ul id="list"></ul>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- static-config -->
+  <script src="static/fee.js"></script>
+  <script src="static/app.js"></script>
+</body>
+</html>

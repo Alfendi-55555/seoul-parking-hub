@@ -20,3 +20,9 @@ data/raw/
 Thumbs.db
 .vscode/
 .idea/
+
+# 로컬 DB
+data/*.db
+
+# GitHub Pages 빌드 결과
+site/
