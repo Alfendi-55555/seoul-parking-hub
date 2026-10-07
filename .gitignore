@@ -1,0 +1,22 @@
+# 비밀 키
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# 데이터 원본(용량 큼)
+data/raw/
+
+# OS/에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
